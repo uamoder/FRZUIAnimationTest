@@ -9,27 +9,131 @@
 import UIKit
 
 class MenuViewController: UIViewController {
+    @IBOutlet weak var maskView: UIView!
+    @IBOutlet weak var headerMask: UIView!
+    @IBOutlet weak var mainView: UIView!
+    @IBOutlet weak var userView: UIView!
+    @IBOutlet weak var popupView: UIView!
+    @IBOutlet weak var shareView: UIView!
+    
+    var startPositionMainView : CGPoint?
+    var xDelta: CGFloat?
+    var yDelta: CGFloat?
+    
+    var animator: UIDynamicAnimator!
+    var attachmentBehavior: UIAttachmentBehavior!
+    var snapBehavior: UISnapBehavior!
 
+//    @IBAction func handleRecognizer(_ sender: UIPanGestureRecognizer) {
+//        print(sender)
+//        
+//        let locationInParent = sender.location(in: maskView)
+//
+//            
+//        //mainView.center = location
+//        
+//        switch sender.state {
+//        case .began:
+//              startPositionMainView = mainView.center
+//              let location = sender.location(in: mainView)
+//              //до центра - поправка
+//              xDelta = location.x - mainView.bounds.width / 2
+//              yDelta = location.y - mainView.bounds.height / 2
+//            
+//        case .changed:
+//            if let startPositionMainView = startPositionMainView {
+//                mainView.center = CGPoint(x: locationInParent.x - xDelta!, y: locationInParent.y - yDelta!)
+//            }
+//        
+//        case .ended:
+//            UIView.animate(withDuration: 0.2, animations: {
+//                self.mainView.center = self.startPositionMainView!
+//                }, completion: { (isCompleted) in
+//                    self.startPositionMainView = nil
+//            })
+//            
+//        default:
+//            print(mainView.center)
+//        }
+//        
+//        func began() {
+//            
+//        }
+//        
+//    }
+    
+    @IBAction func handleRecognizer(_ sender: UIPanGestureRecognizer) {
+        print(sender)
+        
+        let locationInParent = sender.location(in: view)
+        let location = sender.location(in: mainView)
+        
+        switch sender.state {
+        case .began:
+            startPositionMainView = mainView.center
+            animator.removeAllBehaviors()
+            let offset = UIOffsetMake(location.x - mainView.bounds.height/2, location.y - mainView.bounds.width/2)
+            attachmentBehavior = UIAttachmentBehavior(item: mainView, offsetFromCenter: offset, attachedToAnchor: sender.location(in: view))
+            attachmentBehavior.frequency = 0
+            animator.addBehavior(attachmentBehavior)
+            
+        case .changed:
+            attachmentBehavior.anchorPoint = locationInParent
+            
+        case .ended:
+            animator.removeBehavior(attachmentBehavior)
+            snapBehavior = UISnapBehavior(item: mainView, snapTo: view.center)
+            snapBehavior.damping = 0
+            
+            animator.addBehavior(snapBehavior)
+        default:
+            print(mainView.center)
+        }
+        
+        func began() {
+            
+        }
+        
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        maskView.addBlur(type: .light)
+        headerMask.addBlur(type: .light)
+        //popupView.isHidden = false
+        popupView.addBlur(type: .light)
+        userView.addBlur(type: .light)
+        
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        startAnimations()
+        dinamicAnimator()
     }
-    */
+    
+    func startAnimations() {
+        
+        let scale = CGAffineTransform(scaleX: 0.5, y: 0.5)
+        let translate = CGAffineTransform(translationX: 0, y: -300)
+        
+        mainView.transform = scale.concatenating(translate)
+        
+        UIView.animate(withDuration: 2, animations: {
+            let scale = CGAffineTransform(scaleX: 1, y: 1)
+            let translate = CGAffineTransform(translationX: 0, y: 0)
+            
+            self.mainView.transform = scale.concatenating(translate)
+        })
+    }
+    
+    func dinamicAnimator() {
+        
+        animator = UIDynamicAnimator(referenceView: view)
+        
+    }
+
+
 
 }

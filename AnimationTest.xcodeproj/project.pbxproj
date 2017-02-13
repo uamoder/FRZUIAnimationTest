@@ -8,20 +8,24 @@
 
 /* Begin PBXBuildFile section */
 		5FC44BC71E505996006CA81C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FC44BC61E505996006CA81C /* AppDelegate.swift */; };
-		5FC44BC91E505996006CA81C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FC44BC81E505996006CA81C /* ViewController.swift */; };
 		5FC44BCC1E505996006CA81C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5FC44BCA1E505996006CA81C /* Main.storyboard */; };
 		5FC44BCE1E505996006CA81C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5FC44BCD1E505996006CA81C /* Assets.xcassets */; };
 		5FC44BD11E505996006CA81C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5FC44BCF1E505996006CA81C /* LaunchScreen.storyboard */; };
+		5FC44BD91E50CB58006CA81C /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FC44BD81E50CB58006CA81C /* MenuViewController.swift */; };
+		5FC44BDB1E50CB65006CA81C /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FC44BDA1E50CB65006CA81C /* DetailViewController.swift */; };
+		5FC44BDD1E50FCE4006CA81C /* UIViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FC44BDC1E50FCE4006CA81C /* UIViewExtensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		5FC44BC31E505995006CA81C /* AnimationTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AnimationTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5FC44BC61E505996006CA81C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		5FC44BC81E505996006CA81C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		5FC44BCB1E505996006CA81C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		5FC44BCD1E505996006CA81C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5FC44BD01E505996006CA81C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5FC44BD21E505996006CA81C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5FC44BD81E50CB58006CA81C /* MenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
+		5FC44BDA1E50CB65006CA81C /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		5FC44BDC1E50FCE4006CA81C /* UIViewExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewExtensions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,10 +59,12 @@
 			isa = PBXGroup;
 			children = (
 				5FC44BC61E505996006CA81C /* AppDelegate.swift */,
-				5FC44BC81E505996006CA81C /* ViewController.swift */,
+				5FC44BD81E50CB58006CA81C /* MenuViewController.swift */,
+				5FC44BDA1E50CB65006CA81C /* DetailViewController.swift */,
 				5FC44BCA1E505996006CA81C /* Main.storyboard */,
 				5FC44BCD1E505996006CA81C /* Assets.xcassets */,
 				5FC44BCF1E505996006CA81C /* LaunchScreen.storyboard */,
+				5FC44BDC1E50FCE4006CA81C /* UIViewExtensions.swift */,
 				5FC44BD21E505996006CA81C /* Info.plist */,
 			);
 			path = AnimationTest;
@@ -137,8 +143,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5FC44BC91E505996006CA81C /* ViewController.swift in Sources */,
+				5FC44BDB1E50CB65006CA81C /* DetailViewController.swift in Sources */,
 				5FC44BC71E505996006CA81C /* AppDelegate.swift in Sources */,
+				5FC44BDD1E50FCE4006CA81C /* UIViewExtensions.swift in Sources */,
+				5FC44BD91E50CB58006CA81C /* MenuViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

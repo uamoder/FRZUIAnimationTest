@@ -10,6 +10,9 @@ import UIKit
 
 class DetailViewController: UIViewController {
 
+    @IBAction func backButton(_ sender: AnyObject) {
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
